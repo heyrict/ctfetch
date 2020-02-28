@@ -5,11 +5,11 @@ Availables urls should like: https://*.ctfile.com/i/[0-9]*/f/[0-9A-Za-z]*
 """
 
 import argparse
+import gzip
+import json
 import random
 import re
 import sys
-import json
-import gzip
 from urllib.parse import urljoin
 from urllib.request import Request, urlopen
 
@@ -159,8 +159,8 @@ def main():
         downurl = data.get('downurl')
         if downurl:
             results.append(downurl)
-            print(downurl, end='\t', file=output_stream)
 
+    print("\t".join(results), file=output_stream)
     output_stream.close()
 
 
